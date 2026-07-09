@@ -117,11 +117,14 @@
   </div>
 
   <div id="toast"></div>
+  <div id="rotate-hint">Grenadilla plays best in landscape — turn the iPad sideways</div>
 
   <script type="module">
     import { boot } from './js/main.js?v=1';
     boot();
   </script>
   <noscript>Grenadilla needs JavaScript.</noscript>
+  <!-- hub-stats visit counter -->
+  <script>(function(){try{var A="grenadilla",K="hubdev",d=localStorage.getItem(K);if(!d){d=(self.crypto&&crypto.randomUUID?crypto.randomUUID():Date.now()+"."+Math.random().toString(36).slice(2));localStorage.setItem(K,d);}var u="https://hub-stats.mathiasjob.workers.dev/hit",b=JSON.stringify({app:A,d:d});if(navigator.sendBeacon){navigator.sendBeacon(u,b);}else{fetch(u,{method:"POST",body:b,keepalive:true,mode:"no-cors"});}}catch(e){}})();</script>
 </body>
 </html>
