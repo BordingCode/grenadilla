@@ -24,7 +24,7 @@ export function show(id, params) {
   const meta = screens[id] || {};
   const topbar = document.getElementById('topbar');
   topbar.classList.toggle('has-back', id !== 'home');
-  document.getElementById('screen-title').textContent = meta.title || 'Grenadilla';
+  document.getElementById('screen-title').textContent = meta.title || '';
   if (meta.needsMic) ensureMic();
   if (meta.init) { try { meta.init(params); } catch (e) { console.error(e); } }
 }

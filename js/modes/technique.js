@@ -25,7 +25,7 @@ const breath = `<svg viewBox="0 0 300 170" width="260"><g stroke="#8a6a38" fill=
 
 const GUIDES = [
   {
-    id: 'squeak', icon: '🚨', title: 'Squeak rescue',
+    id: 'squeak', icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M12 3 L22 20 L2 20 Z"/><path d="M12 9 L12 14 M12 16.8 L12 17"/></svg>`, title: 'Squeak rescue',
     intro: 'The squeak triage — three causes, three tests.',
     body: `
 <p><b>The instinct that makes it worse:</b> you squeak, so you bite harder. Biting chokes the reed and guarantees the next squeak. The fix is the opposite: <b>relax the jaw, firm the corners, blow FASTER air.</b></p>
@@ -38,7 +38,7 @@ const GUIDES = [
 <p>Everyone squeaks. Stop apologising to it and blow through.</p>`,
   },
   {
-    id: 'embouchure', icon: '👄', title: 'Embouchure', svg: emb,
+    id: 'embouchure', icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M3 12 C7 8 9 9 12 10.5 C15 9 17 8 21 12 C17 16 15 16.5 12 16.5 C9 16.5 7 16 3 12 Z"/></svg>`, title: 'Embouchure', svg: emb,
     intro: 'Firm but relaxed — the cushion, not the clamp.',
     body: `
 <ul>
@@ -51,7 +51,7 @@ const GUIDES = [
 <p>Embouchure stamina takes months. Tired lip = stop; a tired embouchure practices mistakes.</p>`,
   },
   {
-    id: 'breath', icon: '🌬', title: 'Breath support', svg: breath,
+    id: 'breath', icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M3 9 L14 9 C18 9 18 4.5 14.5 4.5 M3 14 L18 14 C22 14 22 19 18 19 M3 4.5 L9 4.5"/></svg>`, title: 'Breath support', svg: breath,
     intro: 'The invisible cause behind almost everything.',
     body: `
 <ul>
@@ -63,7 +63,7 @@ const GUIDES = [
 <p>Long tones (in the Tone menu) are how this is built. A few minutes daily beats an hour on Sunday.</p>`,
   },
   {
-    id: 'tonguing', icon: '👅', title: 'Tonguing',
+    id: 'tonguing', icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M4 8 L20 8 M6 8 C6 14 8.5 17.5 12 17.5 C15.5 17.5 18 14 18 8"/><path d="M12 17.5 L12 12"/></svg>`, title: 'Tonguing',
     intro: 'The tongue interrupts the reed. The air never stops.',
     body: `
 <ul>
@@ -74,7 +74,7 @@ const GUIDES = [
 </ul>`,
   },
   {
-    id: 'reed', icon: '🎋', title: 'Reed care',
+    id: 'reed', icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><rect x="10" y="3" width="4" height="18" rx="2"/><path d="M10 8 L14 8 M10 13 L14 13"/></svg>`, title: 'Reed care',
     intro: 'The reed is the voice. Treat it like one.',
     body: `
 <ul>
@@ -86,7 +86,7 @@ const GUIDES = [
 </ul>`,
   },
   {
-    id: 'throat', icon: '🎈', title: 'Throat tones',
+    id: 'throat', icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="9" r="5.5"/><path d="M12 14.5 C11 17 13 17 12 21"/></svg>`, title: 'Throat tones',
     intro: 'The weakest notes on the instrument — by design.',
     body: `
 <ul>
@@ -126,7 +126,7 @@ function init() {
       grid.style.display = 'none';
       detail.style.display = 'block';
       document.getElementById('tq-content').innerHTML = `
-        <h2 style="font-family:var(--serif);color:var(--brass-bright);margin-bottom:8px">${g.icon} ${g.title}</h2>
+        <h2 style="font-family:var(--serif);color:var(--brass-bright);margin-bottom:8px">${g.title}</h2>
         ${g.svg ? `<div style="text-align:center;margin:10px 0">${g.svg}</div>` : ''}
         <div style="color:var(--cream)">${g.body}</div>`;
       if (Math.random() < 0.25) showReg({ context: 'technique' });
