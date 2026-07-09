@@ -17,6 +17,9 @@ export function show(id, params) {
     try { screens[activeScreen].cleanup(); } catch (e) { console.error(e); }
   }
   document.querySelectorAll('.screen').forEach((s) => s.classList.remove('active'));
+  // navigating away always dismisses a lingering mentor moment
+  const regStage = document.getElementById('reg-stage');
+  if (regStage) regStage.classList.remove('show');
   const el = document.getElementById('screen-' + id);
   if (!el) return;
   el.classList.add('active');

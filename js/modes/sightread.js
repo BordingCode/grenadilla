@@ -63,6 +63,7 @@ function init() {
     seq = generate(pool);
     idx = 0;
     score = renderScore(scoreEl, { keySig: 0, timeSig: [4, 4], notes: seq }, {});
+    status.textContent = 'Play it, left to right. In your own time.';
     paint();
   }
 

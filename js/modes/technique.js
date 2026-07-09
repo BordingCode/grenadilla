@@ -10,7 +10,7 @@ const emb = `<svg viewBox="0 0 300 170" width="260"><g stroke="#8a6a38" fill="no
   <path d="M 126 100 C 140 108 160 108 174 100" stroke="#c9974a" stroke-width="3"/>
   <text x="196" y="78" fill="#b8a98f" font-size="11" stroke="none">top teeth ON</text>
   <text x="196" y="112" fill="#b8a98f" font-size="11" stroke="none">lip cushion, no bite</text>
-  <text x="46" y="150" fill="#b8a98f" font-size="11" stroke="none">~⅓ of the mouthpiece in; corners firm ("eee"); flat chin</text>
+  <text x="150" y="150" fill="#b8a98f" font-size="10.5" stroke="none" text-anchor="middle">~⅓ of the mouthpiece in<tspan x="150" dy="13">corners firm ("eee") · flat chin</tspan></text>
 </g></svg>`;
 
 const breath = `<svg viewBox="0 0 300 170" width="260"><g stroke="#8a6a38" fill="none" stroke-width="2.5">
@@ -19,8 +19,8 @@ const breath = `<svg viewBox="0 0 300 170" width="260"><g stroke="#8a6a38" fill=
   <ellipse cx="90" cy="128" rx="22" ry="16" stroke="#c9974a" stroke-width="3"/>
   <path d="M 140 128 C 180 128 200 120 236 100" stroke="#c9974a" stroke-width="4" marker-end="none"/>
   <path d="M 228 108 L 240 98 L 226 94" stroke="#c9974a" stroke-width="3"/>
-  <text x="126" y="152" fill="#b8a98f" font-size="11" stroke="none">support from HERE — abdomen, not jaw</text>
-  <text x="180" y="86" fill="#b8a98f" font-size="11" stroke="none">fast, steady stream</text>
+  <text x="126" y="152" fill="#b8a98f" font-size="10.5" stroke="none">support from HERE<tspan x="126" dy="13">— abdomen, not jaw</tspan></text>
+  <text x="170" y="86" fill="#b8a98f" font-size="11" stroke="none">fast, steady stream</text>
 </g></svg>`;
 
 const GUIDES = [
