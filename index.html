@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Grenadilla</title>
+  <meta name="description" content="Learn the clarinet. It listens.">
+  <meta name="theme-color" content="#17100b">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" href="icons/icon-180.png">
+  <link rel="stylesheet" href="css/main.css?v=1">
+</head>
+<body>
+  <div id="app">
+    <header id="topbar">
+      <button class="back-btn" id="btn-back">‹ Back</button>
+      <h1>Grenadilla</h1>
+      <span class="sub" id="screen-title"></span>
+      <span class="spacer"></span>
+      <div id="mic-dot" title="microphone"></div>
+    </header>
+
+    <main id="screens" style="display:flex;flex-direction:column;flex:1;min-height:0;">
+      <section class="screen" id="screen-home">
+        <div class="home-section">Play</div>
+        <div class="home-grid">
+          <button class="menu-card wide" data-nav="songbook">
+            <span class="icon">🎼</span><span class="name">Songbook</span>
+            <span class="desc">Real tunes, from three notes to the summit — with backing.</span>
+          </button>
+          <button class="menu-card" data-nav="drill">
+            <span class="icon">⏱</span><span class="name">Note Drill</span>
+            <span class="desc">Name → play it in time, or the fingering shows.</span>
+          </button>
+          <button class="menu-card" data-nav="echo">
+            <span class="icon">👂</span><span class="name">Echo</span>
+            <span class="desc">Hear a phrase, play it back by ear.</span>
+          </button>
+          <button class="menu-card" data-nav="sightread">
+            <span class="icon">👓</span><span class="name">Sight-Reading</span>
+            <span class="desc">Endless fresh melodies at your level.</span>
+          </button>
+          <button class="menu-card" data-nav="lessons">
+            <span class="icon">🪜</span><span class="name">Lessons</span>
+            <span class="desc">New notes and skills, one honest step at a time.</span>
+          </button>
+          <button class="menu-card" data-nav="technique">
+            <span class="icon">🛠</span><span class="name">Technique</span>
+            <span class="desc">Embouchure, breath, tonguing, squeak rescue.</span>
+          </button>
+        </div>
+        <div class="home-section">Tone</div>
+        <div class="home-grid">
+          <button class="menu-card" data-nav="longtone">
+            <span class="icon">〰️</span><span class="name">Long Tones</span>
+            <span class="desc">Hold it steady. Watch your sound mature.</span>
+          </button>
+          <button class="menu-card" data-nav="freeplay">
+            <span class="icon">🎶</span><span class="name">Free Play</span>
+            <span class="desc">Just play. It shows what it hears.</span>
+          </button>
+          <button class="menu-card" data-nav="tuner">
+            <span class="icon">🎯</span><span class="name">Tuner</span>
+            <span class="desc">In tune, or not. No opinions.</span>
+          </button>
+          <button class="menu-card" data-nav="metronome">
+            <span class="icon">🕰</span><span class="name">Metronome</span>
+            <span class="desc">Warm click, honest time.</span>
+          </button>
+          <button class="menu-card" data-nav="recordings">
+            <span class="icon">⏺</span><span class="name">Recordings</span>
+            <span class="desc">Hear yourself from the outside.</span>
+          </button>
+          <button class="menu-card" data-nav="stats">
+            <span class="icon">🗺</span><span class="name">My Range</span>
+            <span class="desc">The map of notes you own — and your tone, over time.</span>
+          </button>
+        </div>
+        <div class="home-section">&nbsp;</div>
+        <div class="home-grid">
+          <button class="menu-card" data-nav="settings">
+            <span class="icon">⚙️</span><span class="name">Settings</span>
+            <span class="desc">Tuning, note names, backup.</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-freeplay"></section>
+      <section class="screen" id="screen-tuner"></section>
+      <section class="screen" id="screen-metronome"></section>
+      <section class="screen" id="screen-longtone"></section>
+      <section class="screen" id="screen-drill"></section>
+      <section class="screen" id="screen-lessons"></section>
+      <section class="screen" id="screen-songbook"></section>
+      <section class="screen" id="screen-songplay"></section>
+      <section class="screen" id="screen-echo"></section>
+      <section class="screen" id="screen-sightread"></section>
+      <section class="screen" id="screen-technique"></section>
+      <section class="screen" id="screen-stats"></section>
+      <section class="screen" id="screen-recordings"></section>
+      <section class="screen" id="screen-settings"></section>
+    </main>
+  </div>
+
+  <div id="mic-gate">
+    <div class="panel">
+      <div style="font-size:40px">🎤</div>
+      <h2 style="font-family:var(--serif);color:var(--brass-bright)">It needs to hear you</h2>
+      <p class="hint" id="mic-gate-msg">Grenadilla listens to your clarinet to tell you what note you're playing and how in tune it is. Nothing is sent anywhere — it all stays on this device.</p>
+      <button class="btn big" id="btn-mic-allow">Allow microphone</button>
+      <button class="btn ghost" id="btn-mic-later">Not now</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script type="module">
+    import { boot } from './js/main.js?v=1';
+    boot();
+  </script>
+  <noscript>Grenadilla needs JavaScript.</noscript>
+</body>
+</html>
