@@ -150,14 +150,19 @@ export function regSVG() {
       <path d="M 186 104 C 190 112 190 122 186 128 L 180 126 C 183 120 183 110 181 104 Z" fill="#9a927f"/>
       <ellipse id="reg-ear" cx="118" cy="112" rx="6" ry="9" fill="#a97e58"/>
       <g id="reg-face">
-        <path id="reg-brows" d="M 128 98 L 146 95 M 156 95 L 174 98" stroke="#9a927f" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-        <ellipse id="reg-eye-l" cx="137" cy="107" rx="4.5" ry="3.6" fill="#f0e2cc"/>
-        <circle cx="138" cy="107.5" r="1.9" fill="#17100b"/>
-        <ellipse id="reg-eye-r" cx="163" cy="107" rx="4.5" ry="3.6" fill="#f0e2cc"/>
-        <circle cx="164" cy="107.5" r="1.9" fill="#17100b"/>
-        <path id="reg-nose" d="M 149 108 C 147 116 145 120 147 123 L 153 123" stroke="#8f6a49" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <path id="reg-moustache" d="M 132 130 C 140 124 160 124 168 130 C 160 132 140 132 132 130 Z" fill="#9a927f"/>
-        <line id="reg-mouth" x1="141" y1="137" x2="159" y2="137" stroke="#6d4f37" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M 138 84 C 144 82 156 82 162 84 M 136 90 C 143 88 157 88 164 90" stroke="#a97e58" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.75"/>
+        <path id="reg-brows" d="M 126 100 L 145 96 M 155 96 L 174 100" stroke="#9a927f" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+        <ellipse id="reg-eye-l" cx="137" cy="107.5" rx="4.6" ry="3.2" fill="#f0e2cc"/>
+        <circle cx="138" cy="108" r="1.9" fill="#17100b"/>
+        <path d="M 132 105 C 135 103.5 140 103.5 142 105" stroke="#8f6a49" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <ellipse id="reg-eye-r" cx="163" cy="107.5" rx="4.6" ry="3.2" fill="#f0e2cc"/>
+        <circle cx="164" cy="108" r="1.9" fill="#17100b"/>
+        <path d="M 158 105 C 161 103.5 166 103.5 168 105" stroke="#8f6a49" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M 128 113 C 126 115 125 117 125 119 M 172 113 C 174 115 175 117 175 119" stroke="#a97e58" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path id="reg-nose" d="M 149 108 C 147 116 145 121 146 124 C 148 126 152 126 154 124" stroke="#8f6a49" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path id="reg-moustache" d="M 128 132 C 134 124 145 126 150 128 C 155 126 166 124 172 132 C 168 137 158 137.5 150 134.5 C 142 137.5 132 137 128 132 Z" fill="#9a927f"/>
+        <line id="reg-mouth" x1="143" y1="140.5" x2="157" y2="140.5" stroke="#6d4f37" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M 139 143 C 137 145 136 147 136 148 M 161 143 C 163 145 164 147 164 148" stroke="#a97e58" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.6"/>
       </g>
     </g>
     <!-- foot -->
