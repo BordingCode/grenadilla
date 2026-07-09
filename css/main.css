@@ -216,3 +216,54 @@ button {
 @media (max-width: 740px) {
   .home-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* ---------- Reg Blackwood ---------- */
+#reg-stage { position: fixed; inset: 0; z-index: 50; display: none; pointer-events: none; }
+#reg-stage.show { display: block; }
+#reg-scrim { position: absolute; inset: 0; background: rgba(10, 6, 3, 0.55); pointer-events: auto; }
+#reg-holder {
+  position: absolute; left: 24px; bottom: max(16px, env(safe-area-inset-bottom));
+  display: flex; align-items: flex-end; gap: 18px; pointer-events: auto;
+  transition: transform 0.52s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.52s ease-out;
+}
+#reg-holder.reg-enter-start { transform: translateY(46px); opacity: 0; }
+#reg-holder.reg-exit { transform: translateY(20px); opacity: 0; transition: 0.38s ease-in; }
+#reg-speech {
+  max-width: min(520px, 55vw); background: linear-gradient(160deg, var(--wood-warm), var(--wood));
+  border: 1px solid rgba(201, 151, 74, 0.35); border-radius: 14px 14px 14px 4px;
+  padding: 18px 22px; margin-bottom: 60px; box-shadow: 0 6px 22px var(--shadow);
+}
+#reg-text { font-family: var(--serif); font-size: 19px; line-height: 1.5; color: var(--cream); min-height: 30px; }
+#reg-sign { margin-top: 10px; font-size: 12.5px; letter-spacing: 0.12em; color: var(--brass); text-align: right; }
+#reg-dismiss { position: absolute; right: -6px; top: -6px; font-size: 20px; padding: 4px 12px; }
+
+/* rig animation states */
+#reg-chest { transform-origin: 50% 100%; animation: reg-breath 3.6s ease-in-out infinite; }
+@keyframes reg-breath { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.025) translateY(-1px); } }
+#reg-eye-l, #reg-eye-r { transform-origin: center; transform-box: fill-box; }
+.blink #reg-eye-l, .blink #reg-eye-r { animation: reg-blink 0.14s ease-in-out; }
+@keyframes reg-blink { 0%, 100% { transform: scaleY(1); } 45% { transform: scaleY(0.08); } }
+#reg-head { transform-origin: 150px 148px; transition: transform 0.4s ease-out; }
+.listening #reg-head { transform: rotate(-6deg); }
+#reg-foot { transform-origin: 132px 282px; transition: transform 0.09s ease-out; }
+.tap #reg-foot { transform: rotate(-13deg) translateY(-3px); }
+#reg-brows { transition: transform 0.22s ease-out; }
+.brow #reg-brows { transform: translateY(-7px); }
+.shake #reg-head { animation: reg-shake 1.5s ease-in-out; }
+@keyframes reg-shake {
+  0% { transform: rotate(0); } 18% { transform: rotate(-7deg); } 45% { transform: rotate(6deg); }
+  72% { transform: rotate(-5deg); } 100% { transform: rotate(0); }
+}
+.nod #reg-head { animation: reg-nod 0.7s ease-out; }
+@keyframes reg-nod { 0% { transform: rotate(0); } 40% { transform: rotate(7deg); } 100% { transform: rotate(0); } }
+.nod-deep #reg-head { animation: reg-nod-deep 1.4s ease-in-out; }
+.nod-deep #reg-brows { transform: translateY(-5px); }
+.nod-deep #reg-mouth { transform: translateY(-1px) scaleX(1.04); transform-box: fill-box; transform-origin: center; }
+@keyframes reg-nod-deep {
+  0% { transform: rotate(0); } 22% { transform: rotate(9deg); } 40% { transform: rotate(3deg); }
+  62% { transform: rotate(8deg); } 100% { transform: rotate(1deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #reg-chest, .blink #reg-eye-l, .blink #reg-eye-r, .shake #reg-head, .nod #reg-head, .nod-deep #reg-head { animation: none; }
+  #reg-holder { transition: opacity 0.3s; }
+}

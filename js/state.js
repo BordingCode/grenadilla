@@ -8,10 +8,13 @@ const DEFAULTS = {
     concertNames: false,   // false = clarinet-written note names (default)
     sound: true,
   },
-  // Per written-midi note mastery: { seen, drilled, mastered }
+  // Per written-midi note mastery: { seen, drilled, mastered, rtMs, misses }
   notes: {},
-  // Per song id: { verdict: 0..4, attempts, bestScore }
+  // Per song id: { verdict: 0..5 (ratchets up only), attempts, bestScore }
   songs: {},
+  metReg: false,
+  brokeTheBreak: false,
+  milestones: {},        // one-shot mentor moments already shown
   // Per lesson id: { done: true }
   lessons: {},
   // Long-tone history: [{day: 'YYYY-MM-DD', bestWobble, note}]
@@ -42,8 +45,16 @@ export function save() {
 }
 
 export function noteRec(written) {
-  if (!state.notes[written]) state.notes[written] = { seen: false, drilled: 0, mastered: false };
+  if (!state.notes[written]) state.notes[written] = { seen: false, drilled: 0, mastered: false, rtMs: 2000, misses: 0 };
   return state.notes[written];
+}
+
+// One-shot milestone gate: returns true the FIRST time only.
+export function milestoneOnce(id) {
+  if (state.milestones[id]) return false;
+  state.milestones[id] = true;
+  save();
+  return true;
 }
 
 export function markNoteSeen(written) { noteRec(written).seen = true; save(); }
