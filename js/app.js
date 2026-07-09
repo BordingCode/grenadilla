@@ -81,7 +81,16 @@ export async function boot(modeModules) {
   });
 
   show('home');
-  if (state.firstRun) { state.firstRun = false; save(); }
+  // Reg notices when you've been away
+  const today = new Date().toISOString().slice(0, 10);
+  if (state.metReg && state.lastVisit && state.lastVisit < today) {
+    const daysAway = Math.round((new Date(today) - new Date(state.lastVisit)) / 86400000);
+    if (daysAway >= 3) {
+      import('./mentor/reg.js').then((m) => setTimeout(() => m.showReg({ context: 'returning', reaction: 'brow' }), 1200));
+    }
+  }
+  state.lastVisit = today;
+  if (state.firstRun) { state.firstRun = false; save(); } else save();
 
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     navigator.serviceWorker.register('sw.js').catch(() => {});
