@@ -105,7 +105,7 @@ export const LESSONS = [
   {
     id: 'f1', phase: 'F', title: 'The air never stops', notes: [67], type: 'tonguing',
     predict: 'To separate notes: stop the AIR, or stop the REED?',
-    text: 'Sustain open G and separate it again and again with the tip of the tongue on the tip of the reed — tee, tee, tee. The air keeps flowing; the tongue only interrupts it. Watch your envelope: a huffer collapses to silence between notes; a good tongue leaves notches on a floor of air.',
+    text: 'Sustain open G and separate it again and again — the tip of the tongue lightly touching just below the tip of the reed: tee, tee, tee. The air keeps flowing; the tongue only interrupts it. Watch your envelope: a huffer collapses to silence between notes; a good tongue leaves notches on a floor of air.',
     reveal: 'Stop the reed. If the floor of your envelope stayed up, the air never quit — that is the whole secret.',
     pass: { notes: 6, goodGapRatio: 0.5 },
   },

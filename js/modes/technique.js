@@ -67,7 +67,7 @@ const GUIDES = [
     intro: 'The tongue interrupts the reed. The air never stops.',
     body: `
 <ul>
-<li>Tip of the tongue to the tip of the reed — lightly, "tee" or a soft "dee".</li>
+<li>The tip of the tongue lightly touches just below the tip of the reed — "tee" or a soft "dee".</li>
 <li>The air column keeps flowing the whole time; the tongue is a valve, not a bellows.</li>
 <li><b>Huffing</b> (separating notes with breath pushes) is the classic error — the Air Never Stops lesson will show you your own envelope.</li>
 <li>Keep the tongue high and light; heavy "tah" drops the tongue and spreads the tone.</li>
