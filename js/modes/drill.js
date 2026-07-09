@@ -33,11 +33,11 @@ function pool(range) {
 }
 
 function weightedPick(notes, avoid) {
+  // never ask the same note twice in a row — a held note can't re-trigger
+  if (notes.length > 1 && avoid !== null) notes = notes.filter((m) => m !== avoid);
   const weights = notes.map((m) => {
     const r = noteRec(m);
-    let w = 1 + r.rtMs / 1000 + 2 * r.misses;
-    if (m === avoid) w *= 0.15;
-    return w;
+    return 1 + r.rtMs / 1000 + 2 * r.misses;
   });
   let total = weights.reduce((a, b) => a + b, 0);
   let roll = Math.random() * total;
@@ -120,6 +120,7 @@ function init() {
 
   function tick() {
     if (!running) return;
+    if (deadline === Infinity) { tickTimer = requestAnimationFrame(tick); return; } // paused during reveal
     const left = deadline - performance.now();
     timerEl.style.width = Math.max(0, (left / (deadline - promptAt)) * 100) + '%';
     if (left <= 0) {

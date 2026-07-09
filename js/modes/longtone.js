@@ -49,6 +49,7 @@ function init() {
   const stab = new PitchStability(240);
   const trail = [];       // cents history for the drawing
   let holdStart = 0;      // ms when current hold began
+  let lastGoodT = 0;      // ms of the last frame that matched the target
   let bestThisNote = null;
   sessionStart = Date.now();
   restNudged = false;
@@ -76,6 +77,7 @@ function init() {
     const target = TARGETS[idx];
     if (written === target) {
       if (!holdStart) holdStart = performance.now();
+      lastGoodT = performance.now();
       stab.push(cents);
       trail.push(cents);
       if (trail.length > 300) trail.shift();
@@ -92,8 +94,8 @@ function init() {
           if (w <= 20) { const r = noteRec(target); r.seen = true; save(); }
         }
       }
-    } else if (written !== null || (holdStart && performance.now() - holdStart > 1200)) {
-      if (holdStart && stab.count > 10) { /* run ended */ }
+    } else if (written !== null || (holdStart && performance.now() - lastGoodT > 700)) {
+      // a different note, or a real gap — a single detector dropout frame does NOT end the run
       holdStart = 0; stab.reset(); trail.length = 0;
     }
     // gentle embouchure-fatigue nudge after ~4 minutes on this screen

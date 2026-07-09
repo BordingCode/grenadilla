@@ -61,7 +61,9 @@ function init() {
       for (let i = 0; i < len; i++) {
         phrase.push(cur);
         const near = notes.filter((n) => Math.abs(n - cur) <= 4 && n !== cur);
-        cur = near.length ? near[Math.floor(Math.random() * near.length)] : notes[Math.floor(Math.random() * notes.length)];
+        const fallback = notes.filter((n) => n !== cur);
+        const from = near.length ? near : (fallback.length ? fallback : notes);
+        cur = from[Math.floor(Math.random() * from.length)];
       }
     }
     progress = 0;

@@ -12,7 +12,7 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/icon-180.png">
   <link rel="icon" href="icons/icon-180.png">
-  <link rel="stylesheet" href="css/main.css?v=4">
+  <link rel="stylesheet" href="css/main.css?v=5">
 </head>
 <body>
   <div id="app">
@@ -21,6 +21,7 @@
       <h1>Grenadilla</h1>
       <span class="sub" id="screen-title"></span>
       <span class="spacer"></span>
+      <button id="btn-settings" data-nav="settings" title="Settings" aria-label="Settings" style="padding:6px 10px;opacity:0.85"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.5 L12 5.5 M12 18.5 L12 21.5 M2.5 12 L5.5 12 M18.5 12 L21.5 12 M5 5 L7.2 7.2 M16.8 16.8 L19 19 M19 5 L16.8 7.2 M7.2 16.8 L5 19"/></svg></button>
       <div id="mic-dot" title="microphone"></div>
     </header>
 
@@ -28,7 +29,7 @@
       <section class="screen" id="screen-home">
         <div class="home-section">Play</div>
         <div class="home-grid">
-          <button class="menu-card wide" data-nav="songbook">
+          <button class="menu-card" data-nav="songbook">
             <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M4 5 C7 3.5 10 3.5 12 5 C14 3.5 17 3.5 20 5 L20 19 C17 17.5 14 17.5 12 19 C10 17.5 7 17.5 4 19 Z"/><path d="M12 5 L12 19"/><path d="M6.5 9 C8 8.3 9.5 8.3 10 8.8 M14 8.8 C15 8.3 16.5 8.3 17.5 9"/></svg></span><span class="name">Songbook</span>
             <span class="desc">Real tunes, from three notes to the summit — with backing.</span>
           </button>
@@ -80,13 +81,6 @@
             <span class="desc">The map of notes you own — and your tone, over time.</span>
           </button>
         </div>
-        <div class="home-section">&nbsp;</div>
-        <div class="home-grid">
-          <button class="menu-card" data-nav="settings">
-            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.5 L12 5.5 M12 18.5 L12 21.5 M2.5 12 L5.5 12 M18.5 12 L21.5 12 M5 5 L7.2 7.2 M16.8 16.8 L19 19 M19 5 L16.8 7.2 M7.2 16.8 L5 19"/></svg></span><span class="name">Settings</span>
-            <span class="desc">Tuning, note names, backup.</span>
-          </button>
-        </div>
       </section>
 
       <section class="screen" id="screen-freeplay"></section>
@@ -120,7 +114,7 @@
   <div id="rotate-hint">Grenadilla plays best in landscape — turn the iPad sideways</div>
 
   <script type="module">
-    import { boot } from './js/main.js?v=4';
+    import { boot } from './js/main.js?v=5';
     boot();
   </script>
   <noscript>Grenadilla needs JavaScript.</noscript>

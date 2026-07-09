@@ -275,9 +275,9 @@ function scheduleBacking(song, songBeat, t, beatsPerBar) {
       if (compHit) {
         for (const iv of ch.iv) playPiano(writtenToSounding(60 + ((ch.pc + iv) % 12) - (ch.pc + iv >= 12 ? 0 : 0)), time, secPerBeat * 1.4, { gain: 0.085 });
       }
-    } else if (isTrio && inBar === Math.floor(inBar) + 0) {
+    } else if (isTrio && Math.random() < 0.25) {
       // light off-beat brush air
-      if (Math.random() < 0.3) playBrush(time, { gain: 0.02 });
+      playBrush(time, { gain: 0.02 });
     }
   }
 }
@@ -289,19 +289,34 @@ function judge(secPerBeat) {
   let sum = 0, judged = 0, wrongs = 0;
   const centsList = [];
 
+  const used = new Set();       // each played onset may satisfy only one written note
+  let prevMatched = null;       // previous expect's matched midi (for slur leniency)
   for (const e of P.expect) {
-    const dur = e.end - e.start;
-    const hits = P.captured.filter((c) => c.beat >= e.start - TOL && c.beat < Math.max(e.start + TOL, e.end - 0.15));
-    const match = hits.find((h) => h.midi === e.midi);
+    const hits = P.captured
+      .map((c, k) => ({ ...c, k }))
+      .filter((c) => !used.has(c.k) && c.beat >= e.start - TOL && c.beat < Math.max(e.start + TOL, e.end - 0.15));
+    let match = hits.find((h) => h.midi === e.midi);
+    // slur leniency: a repeated pitch played legato produces ONE onset —
+    // if the previous note was this same pitch and was matched, the held
+    // tone covers this note too.
+    let slurred = false;
+    if (!match && prevMatched && prevMatched.midi === e.midi) {
+      match = prevMatched;
+      slurred = true;
+    }
     let val, color;
     if (match) {
+      if (!slurred) used.add(match.k);
       centsList.push(Math.abs(match.cents));
-      const late = match.beat > e.start + 0.35;
+      const late = !slurred && match.beat > e.start + 0.35;
       if (Math.abs(match.cents) > 25) { val = 0.6; color = 'var(--warn)'; }
       else if (late) { val = 0.7; color = 'var(--warn)'; }
       else { val = 1.0; color = 'var(--good)'; }
-    } else if (hits.length) { val = 0; wrongs++; color = 'var(--bad)'; }
-    else { val = 0; wrongs++; color = 'var(--bad)'; }
+      prevMatched = match;
+    } else {
+      val = 0; wrongs++; color = 'var(--bad)';
+      prevMatched = null;
+    }
     sum += val; judged++;
     colors[e.i] = color;
   }
