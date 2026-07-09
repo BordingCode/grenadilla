@@ -24,6 +24,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
+  height: 100vh;
   height: 100svh;
   overflow: hidden;
   background: var(--wood-deep);
@@ -33,10 +34,7 @@ html, body {
 }
 
 body {
-  background:
-    radial-gradient(ellipse 120% 90% at 50% -20%, rgba(201, 151, 74, 0.08), transparent 60%),
-    radial-gradient(ellipse 140% 110% at 50% 115%, rgba(0, 0, 0, 0.55), transparent 55%),
-    linear-gradient(170deg, #201510 0%, var(--wood-deep) 55%, #120c08 100%);
+  background: linear-gradient(170deg, #221610 0%, var(--wood-deep) 60%, #120c08 100%);
 }
 
 button {
@@ -52,6 +50,7 @@ button {
 }
 
 #app {
+  height: 100vh;
   height: 100svh;
   display: flex;
   flex-direction: column;
@@ -94,7 +93,7 @@ button {
 #mic-dot.err { background: var(--bad); }
 
 /* ---------- home menu ---------- */
-#screen-home { padding: 8px 24px 18px; overflow-y: auto; justify-content: center; }
+#screen-home { padding: 14px 24px 20px; overflow-y: auto; }
 .home-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -117,7 +116,8 @@ button {
   gap: 6px;
 }
 .menu-card:active { transform: scale(0.97); border-color: var(--brass); }
-.menu-card .icon { font-size: 24px; line-height: 1; }
+.menu-card .icon { line-height: 0; height: 26px; }
+.menu-card .icon svg { width: 26px; height: 26px; display: block; }
 .menu-card .name { font-family: var(--serif); font-size: 17px; color: var(--cream); }
 .menu-card .desc { font-size: 11.5px; color: var(--cream-dim); line-height: 1.35; }
 .menu-card.wide { grid-column: span 2; }

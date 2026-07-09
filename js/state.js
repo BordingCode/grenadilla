@@ -26,15 +26,17 @@ const DEFAULTS = {
   firstRun: true,
 };
 
+const clone = (o) => (typeof structuredClone === 'function' ? structuredClone(o) : JSON.parse(JSON.stringify(o)));
+
 function load() {
   try {
     const raw = localStorage.getItem(KEY);
     if (raw) {
       const data = JSON.parse(raw);
-      return { ...structuredClone(DEFAULTS), ...data, settings: { ...DEFAULTS.settings, ...(data.settings || {}) } };
+      return { ...clone(DEFAULTS), ...data, settings: { ...DEFAULTS.settings, ...(data.settings || {}) } };
     }
   } catch (e) { /* corrupt save: start fresh rather than crash */ }
-  return structuredClone(DEFAULTS);
+  return clone(DEFAULTS);
 }
 
 export const state = load();
@@ -80,6 +82,6 @@ export function importData(json) {
   const data = JSON.parse(json); // throws on bad JSON — caller shows the error
   if (typeof data !== 'object' || !data.version) throw new Error('Not a Grenadilla backup file');
   Object.keys(state).forEach((k) => delete state[k]);
-  Object.assign(state, { ...structuredClone(DEFAULTS), ...data });
+  Object.assign(state, { ...clone(DEFAULTS), ...data });
   save();
 }
