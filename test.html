@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Grenadilla render test</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; padding: 16px; background: #17100b; color: #f0e2cc;
+           font-family: -apple-system, Roboto, sans-serif; }
+    h1 { font-size: 20px; color: #e8b96a; }
+    h2 { font-size: 16px; color: #e8b96a; margin: 26px 0 10px; border-top: 1px solid #4a3626; padding-top: 16px; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; max-width: 960px; }
+    .card { background: #33241a; border: 1px solid rgba(201,151,74,0.22); border-radius: 14px;
+            padding: 16px 14px 13px; min-height: 96px; }
+    .card .name { font-family: Georgia, serif; font-size: 17px; display: block; margin-top: 6px; }
+    .card .desc { font-size: 11.5px; color: #b8a98f; display: block; margin-top: 4px; }
+    .serif { font-family: Georgia, serif; font-size: 17px; max-width: 640px; line-height: 1.5; }
+    button { font-size: 18px; padding: 14px 26px; border-radius: 12px; border: none;
+             background: #c9974a; color: #241505; font-weight: 600; }
+    #micstate { margin-top: 10px; font-size: 15px; color: #8fc97a; min-height: 22px; }
+  </style>
+</head>
+<body>
+  <h1>Grenadilla render test page</h1>
+  <p>Look at each section. Which sections look broken (static/noise, missing boxes)?</p>
+
+  <h2>Section A — cards WITH drawn icons</h2>
+  <div class="grid">
+    <div class="card"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M4 5 C7 3.5 10 3.5 12 5 C14 3.5 17 3.5 20 5 L20 19 C17 17.5 14 17.5 12 19 C10 17.5 7 17.5 4 19 Z"/><path d="M12 5 L12 19"/></svg><span class="name">Songbook</span><span class="desc">Real tunes, from three notes to the summit.</span></div>
+    <div class="card"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 13 L12 8.5 M12 5 L12 3 M9 3 L15 3"/></svg><span class="name">Note Drill</span><span class="desc">A note appears — play it in time.</span></div>
+    <div class="card"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M4 10 L4 14 M8 7 L8 17 M12 4.5 L12 19.5 M16 7 L16 17 M20 10 L20 14"/></svg><span class="name">Echo</span><span class="desc">Hear a phrase, play it back by ear.</span></div>
+    <div class="card"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="14" r="4"/><circle cx="17.5" cy="14" r="4"/><path d="M12 14 L13.5 14"/></svg><span class="name">Sight-Reading</span><span class="desc">Endless fresh melodies at your level.</span></div>
+    <div class="card"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M6 21 L6 5 M18 21 L18 3 M6 8 L18 6.5"/></svg><span class="name">Lessons</span><span class="desc">New notes and skills, one step at a time.</span></div>
+    <div class="card"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M14.5 4 A6 6 0 1 0 18.5 10.5 L21 13 L19 15 L16 12.2"/><circle cx="11" cy="9.5" r="1.6"/></svg><span class="name">Technique</span><span class="desc">Embouchure, breath, tonguing.</span></div>
+  </div>
+
+  <h2>Section B — same cards, NO drawn icons</h2>
+  <div class="grid">
+    <div class="card">📖<span class="name">Songbook</span><span class="desc">Real tunes, from three notes to the summit.</span></div>
+    <div class="card">⏱️<span class="name">Note Drill</span><span class="desc">A note appears — play it in time.</span></div>
+    <div class="card">🔊<span class="name">Echo</span><span class="desc">Hear a phrase, play it back by ear.</span></div>
+    <div class="card">👓<span class="name">Sight-Reading</span><span class="desc">Endless fresh melodies at your level.</span></div>
+    <div class="card">🪜<span class="name">Lessons</span><span class="desc">New notes and skills, one step at a time.</span></div>
+    <div class="card">🎯<span class="name">Technique</span><span class="desc">Embouchure, breath, tonguing.</span></div>
+  </div>
+
+  <h2>Section C — plain text in the fancy font</h2>
+  <p class="serif">The clarinet's break sits between written B-flat and B natural. Crossing it smoothly
+  is mostly about keeping the air steady and the fingers light. Reg Blackwood would add: stop
+  pinching the reed, it never did anything to you.</p>
+
+  <h2>Section D — microphone test</h2>
+  <p>Tap the button, allow the microphone, then look at sections A–C again for ~10 seconds.
+  Does the page break AFTER the microphone starts?</p>
+  <button id="micbtn">Start microphone test</button>
+  <div id="micstate"></div>
+
+  <script>
+    document.getElementById('micbtn').addEventListener('click', async () => {
+      const state = document.getElementById('micstate');
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const src = ctx.createMediaStreamSource(stream);
+        const analyser = ctx.createAnalyser();
+        analyser.fftSize = 2048;
+        src.connect(analyser);
+        const buf = new Float32Array(analyser.fftSize);
+        let frames = 0;
+        (function loop() {
+          analyser.getFloatTimeDomainData(buf);
+          let rms = 0; for (let i = 0; i < buf.length; i++) rms += buf[i] * buf[i];
+          rms = Math.sqrt(rms / buf.length);
+          frames++;
+          if (frames % 30 === 0) state.textContent = 'Microphone RUNNING · level ' + rms.toFixed(3) + ' · now check sections A–C';
+          requestAnimationFrame(loop);
+        })();
+        state.textContent = 'Microphone RUNNING — now look at sections A–C';
+      } catch (e) {
+        state.textContent = 'Microphone failed: ' + e.name;
+      }
+    });
+  </script>
+</body>
+</html>
