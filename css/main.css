@@ -1,6 +1,7 @@
 /* Grenadilla — warm jazz-club design system.
    Palette: grenadilla wood blacks/browns, brass, aged cream. iPad landscape first. */
 :root {
+  color-scheme: dark; /* tell Samsung Internet/Chrome force-dark the page is already dark — don't re-invert */
   --wood-deep: #17100b;
   --wood: #241811;
   --wood-warm: #33241a;
@@ -284,17 +285,27 @@ button {
   }
 }
 
-/* ---------- Android reduced-graphics mode ----------
-   Some Android tablet GPUs corrupt raster tiles (static bands, ghost/missing
-   cards — seen on Mathias's Samsung tablet, photos 2026-07-09/10) when large
-   gradient-filled layers sit inside a scroller. Flatten the big gradients and
-   promote the active screen to its own compositing layer. The html.android
-   class is set by an inline script in index.html <head>. */
-html.android body { background: var(--wood-deep); }
+/* ---------- Android safe mode ----------
+   Mathias's Samsung tablet corrupts Grenadilla's raster tiles (static bands,
+   ghost/missing cards — photos 2026-07-09/10) while his other apps render fine.
+   v8's gentle flattening didn't cure it, so this is the blunt version: no
+   gradients, shadows, transitions or animations anywhere on Android. Solid
+   colors and text only. The html.android class is set by an inline script in
+   index.html <head>. */
+html.android *,
+html.android *::before,
+html.android *::after {
+  background-image: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+html.android body { background-color: var(--wood-deep); }
 html.android .menu-card,
 html.android .panel,
-html.android #reg-speech { background: var(--wood-warm); }
-html.android .menu-card,
-html.android .panel { box-shadow: none; }
+html.android #reg-speech { background-color: var(--wood-warm); }
+html.android .btn { background-color: var(--brass); }
+html.android .btn.ghost { background-color: transparent; }
+html.android .cents-track { background-color: rgba(201, 151, 74, 0.08); }
 html.android .menu-card:active { transform: none; }
-html.android .screen.active { transform: translateZ(0); }
