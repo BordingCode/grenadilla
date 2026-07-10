@@ -318,3 +318,12 @@ html.android .menu-card:active { transform: none; }
 html.android .screen,
 html.android [style*="overflow-y:auto"] { background-color: var(--wood-deep); }
 html.android [style*="overflow-x:auto"] { background-color: #100a06; }
+/* v11: opaque wasn't enough — the ghost cards mean the scroller's raster
+   tiles themselves get shuffled. The Bording Hub (root scroll, no inner
+   scroller) renders fine on the same tablet, so: no inner scroller for home
+   at all on Android. Home fits a tablet viewport; only short screens
+   (phones) keep the scroller and its risk. */
+html.android #screen-home { overflow-y: visible; }
+@media (max-height: 600px) {
+  html.android #screen-home { overflow-y: auto; }
+}
