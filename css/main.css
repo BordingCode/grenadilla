@@ -283,3 +283,18 @@ button {
     font-size: 13px; letter-spacing: 0.06em;
   }
 }
+
+/* ---------- Android reduced-graphics mode ----------
+   Some Android tablet GPUs corrupt raster tiles (static bands, ghost/missing
+   cards — seen on Mathias's Samsung tablet, photos 2026-07-09/10) when large
+   gradient-filled layers sit inside a scroller. Flatten the big gradients and
+   promote the active screen to its own compositing layer. The html.android
+   class is set by an inline script in index.html <head>. */
+html.android body { background: var(--wood-deep); }
+html.android .menu-card,
+html.android .panel,
+html.android #reg-speech { background: var(--wood-warm); }
+html.android .menu-card,
+html.android .panel { box-shadow: none; }
+html.android .menu-card:active { transform: none; }
+html.android .screen.active { transform: translateZ(0); }
