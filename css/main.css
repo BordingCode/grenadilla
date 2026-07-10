@@ -309,3 +309,12 @@ html.android .btn { background-color: var(--brass); }
 html.android .btn.ghost { background-color: transparent; }
 html.android .cents-track { background-color: rgba(201, 151, 74, 0.08); }
 html.android .menu-card:active { transform: none; }
+/* THE key fix (v10): scrollable areas become their own composited layer on
+   Android; when that layer is transparent this tablet's GPU shows
+   uninitialized-memory static in the gaps between elements (Settings — which
+   doesn't scroll — rendered fine, home — which scrolls — glitched). An opaque
+   background on every scroller removes the alpha blending entirely.
+   Mode screens create scrollers as inline styles, hence the [style*=] hooks. */
+html.android .screen,
+html.android [style*="overflow-y:auto"] { background-color: var(--wood-deep); }
+html.android [style*="overflow-x:auto"] { background-color: #100a06; }

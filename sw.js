@@ -1,9 +1,9 @@
 // Grenadilla service worker — cache-first for the app shell.
 // BUMP CACHE VERSION on every deploy that changes js/css/html.
-const CACHE = 'grenadilla-v9';
+const CACHE = 'grenadilla-v10';
 const ASSETS = [
   '.', 'index.html', 'manifest.json',
-  'css/main.css?v=9',
+  'css/main.css?v=10',
   'icons/icon-180.png', 'icons/icon-512.png',
 ];
 
