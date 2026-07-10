@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Grenadilla static test</title>
+  <meta name="description" content="Learn the clarinet. It listens.">
+  <meta name="theme-color" content="#17100b">
+  <meta name="color-scheme" content="dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" href="icons/icon-180.png">
+  <script>if (/android/i.test(navigator.userAgent)) document.documentElement.classList.add('android');</script>
+  <link rel="stylesheet" href="css/main.css?v=12">
+  <style>#screen-home{display:flex}</style>
+</head>
+<body>
+  <div id="app">
+    <header id="topbar">
+      <button class="back-btn" id="btn-back">‹ Back</button>
+      <h1>Grenadilla</h1>
+      <span class="sub" id="screen-title"></span>
+      <span class="spacer"></span>
+      <button id="btn-settings" data-nav="settings" title="Settings" aria-label="Settings" style="padding:6px 10px;opacity:0.85"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.5 L12 5.5 M12 18.5 L12 21.5 M2.5 12 L5.5 12 M18.5 12 L21.5 12 M5 5 L7.2 7.2 M16.8 16.8 L19 19 M19 5 L16.8 7.2 M7.2 16.8 L5 19"/></svg></button>
+      <div id="mic-dot" title="microphone"></div>
+    </header>
+
+    <main id="screens" style="display:flex;flex-direction:column;flex:1;min-height:0;">
+      <section class="screen" id="screen-home">
+        <div class="home-section">Play</div>
+        <div class="home-grid">
+          <button class="menu-card" data-nav="songbook">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M4 5 C7 3.5 10 3.5 12 5 C14 3.5 17 3.5 20 5 L20 19 C17 17.5 14 17.5 12 19 C10 17.5 7 17.5 4 19 Z"/><path d="M12 5 L12 19"/><path d="M6.5 9 C8 8.3 9.5 8.3 10 8.8 M14 8.8 C15 8.3 16.5 8.3 17.5 9"/></svg></span><span class="name">Songbook</span>
+            <span class="desc">Real tunes, from three notes to the summit — with backing.</span>
+          </button>
+          <button class="menu-card" data-nav="drill">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 13 L12 8.5 M12 5 L12 3 M9 3 L15 3"/></svg></span><span class="name">Note Drill</span>
+            <span class="desc">A note appears — play it in time, or the fingering shows.</span>
+          </button>
+          <button class="menu-card" data-nav="echo">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M4 10 L4 14 M8 7 L8 17 M12 4.5 L12 19.5 M16 7 L16 17 M20 10 L20 14"/></svg></span><span class="name">Echo</span>
+            <span class="desc">Hear a phrase, play it back by ear.</span>
+          </button>
+          <button class="menu-card" data-nav="sightread">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="14" r="4"/><circle cx="17.5" cy="14" r="4"/><path d="M12 14 L13.5 14 M4.5 11 C7 8 17 8 21 11"/></svg></span><span class="name">Sight-Reading</span>
+            <span class="desc">Endless fresh melodies at your level.</span>
+          </button>
+          <button class="menu-card" data-nav="lessons">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M6 21 L6 5 M18 21 L18 3 M6 8 L18 6.5 M6 13 L18 11.5 M6 18 L18 16.5"/></svg></span><span class="name">Lessons</span>
+            <span class="desc">New notes and skills, one honest step at a time.</span>
+          </button>
+          <button class="menu-card" data-nav="technique">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M14.5 4 A6 6 0 1 0 18.5 10.5 L21 13 L19 15 L16 12.2"/><circle cx="11" cy="9.5" r="1.6"/></svg></span><span class="name">Technique</span>
+            <span class="desc">Embouchure, breath, tonguing, squeak rescue.</span>
+          </button>
+        </div>
+        <div class="home-section">Tone</div>
+        <div class="home-grid">
+          <button class="menu-card" data-nav="longtone">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M2 12 C5 12 5 9.5 8 9.5 C11 9.5 11 14.5 14 14.5 C17 14.5 17 12 22 12"/></svg></span><span class="name">Long Tones</span>
+            <span class="desc">Hold it steady. Watch your sound mature.</span>
+          </button>
+          <button class="menu-card" data-nav="freeplay">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M9 18 L9 6 L19 4 L19 16"/><circle cx="6.6" cy="18" r="2.6"/><circle cx="16.6" cy="16" r="2.6"/></svg></span><span class="name">Free Play</span>
+            <span class="desc">Just play. It shows what it hears.</span>
+          </button>
+          <button class="menu-card" data-nav="tuner">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.2" fill="#c9974a"/></svg></span><span class="name">Tuner</span>
+            <span class="desc">In tune, or not. No opinions.</span>
+          </button>
+          <button class="menu-card" data-nav="metronome">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M9 4 L15 4 L18 20 L6 20 Z"/><path d="M12 15 L16 6"/><circle cx="16" cy="5.5" r="1.3"/></svg></span><span class="name">Metronome</span>
+            <span class="desc">Warm click, honest time.</span>
+          </button>
+          <button class="menu-card" data-nav="recordings">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11 C5.5 15 8 17.5 12 17.5 C16 17.5 18.5 15 18.5 11 M12 17.5 L12 21"/></svg></span><span class="name">Recordings</span>
+            <span class="desc">Hear yourself from the outside.</span>
+          </button>
+          <button class="menu-card" data-nav="stats">
+            <span class="icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><path d="M4 20 L4 4 M4 20 L20 20"/><path d="M7 16 L11 11 L14 13.5 L19 6"/></svg></span><span class="name">My Range</span>
+            <span class="desc">The map of notes you own — and your tone, over time.</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-freeplay"></section>
+      <section class="screen" id="screen-tuner"></section>
+      <section class="screen" id="screen-metronome"></section>
+      <section class="screen" id="screen-longtone"></section>
+      <section class="screen" id="screen-drill"></section>
+      <section class="screen" id="screen-lessons"></section>
+      <section class="screen" id="screen-songbook"></section>
+      <section class="screen" id="screen-songplay"></section>
+      <section class="screen" id="screen-echo"></section>
+      <section class="screen" id="screen-sightread"></section>
+      <section class="screen" id="screen-technique"></section>
+      <section class="screen" id="screen-stats"></section>
+      <section class="screen" id="screen-recordings"></section>
+      <section class="screen" id="screen-settings"></section>
+    </main>
+  </div>
+
+  <div id="mic-gate">
+    <div class="panel">
+      <div><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#c9974a" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11 C5.5 15 8 17.5 12 17.5 C16 17.5 18.5 15 18.5 11 M12 17.5 L12 21 M9 21 L15 21"/></svg></div>
+      <h2 style="font-family:var(--serif);color:var(--brass-bright)">It needs to hear you</h2>
+      <p class="hint" id="mic-gate-msg">Grenadilla listens to your clarinet to tell you what note you're playing and how in tune it is. Nothing is sent anywhere — it all stays on this device.</p>
+      <button class="btn big" id="btn-mic-allow">Allow microphone</button>
+      <button class="btn ghost" id="btn-mic-later">Not now</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+  <div id="rotate-hint">Grenadilla plays best in landscape — turn the iPad sideways</div>
+
+  <noscript>Grenadilla needs JavaScript.</noscript>
+</body>
+</html>
