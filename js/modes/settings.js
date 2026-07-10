@@ -5,6 +5,20 @@ export function register({ registerScreen, toast }) {
   registerScreen('settings', { title: 'Settings', init: () => init(toast), cleanup: () => {} });
 }
 
+// Compact engine identity for remote diagnosis (which browser+version this device runs).
+function browserLine() {
+  const ua = navigator.userAgent;
+  const parts = [];
+  const m = (re) => (ua.match(re) || [])[0];
+  const os = m(/Android [\d.]+/) || m(/(iPad|iPhone|CPU) OS [\d_]+/) || '';
+  if (os) parts.push(os.replace(/_/g, '.'));
+  const eng = m(/SamsungBrowser\/[\d.]+/) || m(/(Chrome|CriOS|Firefox|Version)\/[\d.]+/) || '';
+  if (eng) parts.push(eng);
+  if (/wv\)/.test(ua)) parts.push('WebView');
+  if (window.matchMedia('(display-mode: standalone)').matches) parts.push('installed app');
+  return parts.join(' · ') || ua.slice(0, 80);
+}
+
 function init(toast) {
   const el = document.getElementById('screen-settings');
   // Version = the ?v= cache-bust tag on the stylesheet, so it always matches what this device actually loaded.
@@ -32,6 +46,7 @@ function init(toast) {
         </div>
       </div>
       <p class="hint">Grenadilla${ver ? ` · version ${ver}` : ''} · everything stays on this iPad · microphone audio is never recorded or sent anywhere (recordings you make yourself stay here too)</p>
+      <p class="hint" style="font-size:11px;opacity:0.7">${browserLine()}</p>
     </div>`;
 
   const a4El = document.getElementById('se-a4');

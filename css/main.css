@@ -327,3 +327,11 @@ html.android #screen-home { overflow-y: visible; }
 @media (max-height: 600px) {
   html.android #screen-home { overflow-y: auto; }
 }
+/* v12: full Hub-parity on Android. Mathias's tablet can't update its browser
+   engine further and still corrupts the fixed-height app shell, while the
+   Bording Hub (a normal-flow document that scrolls at the root) renders
+   perfectly on the same engine. So on Android the shell becomes a normal
+   document: the page itself scrolls, no fixed-height traps anywhere. */
+html.android,
+html.android body { height: auto; min-height: 100vh; overflow: visible; }
+html.android #app { height: auto; min-height: 100vh; }
