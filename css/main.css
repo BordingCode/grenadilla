@@ -206,12 +206,17 @@ button {
 #toast {
   position: fixed; bottom: max(18px, env(safe-area-inset-bottom)); left: 50%;
   transform: translateX(-50%) translateY(120%);
+  opacity: 0; visibility: hidden;
   background: var(--wood-warm); color: var(--cream);
   border: 1px solid rgba(201, 151, 74, 0.4);
   padding: 12px 22px; border-radius: 12px; font-size: 15px;
-  transition: transform 0.3s; z-index: 70; max-width: 80vw; text-align: center;
+  transition: transform 0.3s, opacity 0.3s, visibility 0s 0.3s; z-index: 70; max-width: 80vw; text-align: center;
 }
-#toast.show { transform: translateX(-50%) translateY(0); }
+#toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1; visibility: visible;
+  transition: transform 0.3s, opacity 0.3s;
+}
 
 @media (max-width: 740px) {
   .home-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

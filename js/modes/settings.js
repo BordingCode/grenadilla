@@ -7,6 +7,8 @@ export function register({ registerScreen, toast }) {
 
 function init(toast) {
   const el = document.getElementById('screen-settings');
+  // Version = the ?v= cache-bust tag on the stylesheet, so it always matches what this device actually loaded.
+  const ver = (document.querySelector('link[href*="main.css?v="]')?.href.match(/v=(\d+)/) || [])[1];
   el.innerHTML = `
     <div style="flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px;max-width:620px;margin:0 auto;width:100%">
       <div class="panel" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
@@ -29,7 +31,7 @@ function init(toast) {
           <input type="file" id="se-file" accept=".json" style="display:none">
         </div>
       </div>
-      <p class="hint">Grenadilla · everything stays on this iPad · microphone audio is never recorded or sent anywhere (recordings you make yourself stay here too)</p>
+      <p class="hint">Grenadilla${ver ? ` · version ${ver}` : ''} · everything stays on this iPad · microphone audio is never recorded or sent anywhere (recordings you make yourself stay here too)</p>
     </div>`;
 
   const a4El = document.getElementById('se-a4');
